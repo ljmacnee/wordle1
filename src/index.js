@@ -18,6 +18,7 @@ function Row(props) {
       key={index}
     />
   )
+  console.log(squares)
   return (
     <div className="board-row">
       {squares}
@@ -32,13 +33,13 @@ function Board(props) {
   }
 
   var count=0
+
   for (var i = 0; i < grid.length; i++) {
     for (var j = 0; j < grid[0].length; j++) {
       grid[i][j] = count;
       count+=1;
     }
   }
-  console.log(grid)
   //const grid = [
    // [0, 1, 2],
    // [3, 4, 5],
@@ -52,7 +53,6 @@ function Board(props) {
       onClick={props.onClick}
       key={indexes}
     />
-
   )
   return (
     <div>
@@ -69,11 +69,13 @@ function App() {
   
 
   function handleClick(i) {
-    const squares = sq.squares.slice();
+    var squares = sq.squares.slice();
     squares[i] = xIsNext ? 'X' : 'O';
-    console.log(squares)
+    const newSquares = {
+      squares,
+    }
     setXIsNext(!xIsNext)
-    setS(squares)
+    setS(newSquares)
   }
 
   return (
